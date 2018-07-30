@@ -24,7 +24,7 @@ function main() {
     } else if(ENTITY === 'Campaign') {
       entityIter = AdWordsApp.campaigns().withCondition("LabelNames CONTAINS_ANY "+labelsStr).get();
     } else {
-      throw 'Invaid ENTITY type. Should be Campaign, Keyword or Ad. ENTITY:'+ENTITY;
+      throw 'Invalid ENTITY type. ENTITY should be Campaign, Keyword or Ad. ENTITY:'+ENTITY;
     }
 
     while(entityIter.hasNext()) {
