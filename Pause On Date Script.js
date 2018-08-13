@@ -4,7 +4,13 @@ var ENTITY = 'AdGroup';
 var PAUSE_PREFIX = "Pause on ";
 //adds 'enable on' string
 var ENABLE_PREFIX = "Enable on ";
-
+//Set report builder function query here?? -- I dont think i need this -- adding for reference
+var QUERIES = [
+  {'query' : 'SELECT CampaignName, Clicks, Impressions ' +
+  'FROM CAMPAIGN_PERFORMANCE_REPORT ' +
+  'WHERE LabelNames CONTAINS_ANY ' + labelizer;
+  }
+];
 
 function main() {
   //get current day from AdWords app
@@ -28,9 +34,18 @@ function main() {
 
        while(entityIterator.hasNext()) {
        	var entity = entityIterator.next();
+        //Call report builder function before removal of label
+        reportBuilder(entity, pauseAdGroup);
         pauseEntity(entity, pauseAdGroup);
+        reportBuilder(entity, enableAdGroup);
         enableEntity(entity, enableAdGroup);
        }
+  }
+
+  //Build report report builder function here -- function to export to sheets
+  //Call function within main() and have it check for entityIterator to equal labelizer
+  function reportbuilder() {
+    Logger.log("Am i working??");
   }
 
   //Helper function to build a list of labels in the account
@@ -64,7 +79,7 @@ function enableEntity(entity, enableStr) {
     entity.enable();
     entity.removeLabel(enableAdGroup);
   }
-
-
 }
+
+
 }
